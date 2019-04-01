@@ -1,0 +1,8 @@
+For example:
+
+  $ ./bin/sms build
+
+Usage: build [options]
+
+Options:
+  <none>

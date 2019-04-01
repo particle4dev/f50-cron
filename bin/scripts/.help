@@ -1,0 +1,5 @@
+Setup and deploy serverless graphql service on AWS.
+
+Usage:
+  ./bin/snail [-f <arg>...] [options] [COMMAND] [ARGS...]
+  ./bin/snail -h|--help

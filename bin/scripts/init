@@ -1,0 +1,32 @@
+#!/bin/bash
+ROOT_DIR=`dirname "$(perl -e 'use Cwd "abs_path"; print abs_path(shift)' $0)"`
+
+. "$ROOT_DIR/../constant"
+for f in $ROOT_DIR/../utils/*; do source $f; done
+
+EVN="development"
+arg=("-backend-config=bucket=$STATE_S3_BUCKET" "-backend-config=key=$STATE_S3_KEY-development.tfstate" "-backend-config=region=$AWS_DEFAULT_REGION")
+
+for i in "$@"
+do
+case $i in
+-e=*|--env=*)
+EVN="${i#*=}"
+;;
+*)
+# unknown option
+;;
+esac
+done
+
+if [ $EVN == "staging" ];
+then
+  arg=("-backend-config=bucket=$STATE_S3_BUCKET" "-backend-config=key=$STATE_S3_KEY-staging.tfstate" "-backend-config=region=$AWS_DEFAULT_REGION")
+fi
+
+if [ $EVN == "production" ];
+then
+  arg=("-backend-config=bucket=$STATE_S3_BUCKET" "-backend-config=key=$STATE_S3_KEY-production.tfstate" "-backend-config=region=$AWS_DEFAULT_REGION")
+fi
+
+run_terraform -i -t init ${@} ${arg[@]}

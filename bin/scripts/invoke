@@ -1,0 +1,41 @@
+#!/bin/bash
+ROOT_DIR=`dirname "$(perl -e 'use Cwd "abs_path"; print abs_path(shift)' $0)"`
+
+. "$ROOT_DIR/../constant"
+for f in $ROOT_DIR/../utils/*; do source $f; done
+
+data='{}'
+
+for i in $*;
+do
+case $i in
+-d=*|--data=*)
+data="${i#*=}"
+shift # past argument=value
+;;
+*)
+  # unknown option
+;;
+esac
+done
+
+# The $URL contains a \r (CR) at the end (0d). Remove it with
+# URL=${URL%$'\r'}
+# before using it with curl.
+# https://stackoverflow.com/questions/35018899/using-curl-in-a-bash-script-and-getting-curl-3-illegal-characters-found-in-ur
+entry_point=$(run_terraform_with_pure_param -i -t output test_url)
+EXIT_CODE=$?
+if [ 1 -eq $EXIT_CODE ];
+then
+  echo 'Not found URL :('
+  exit $EXIT_CODE
+fi
+entry_point=${entry_point%$'\r'}
+
+docker run \
+  -i -t \
+  --rm byrnedo/alpine-curl \
+  -H "Content-Type: application/json" \
+  -X POST \
+  -d "{\"query\": \"$data\"}" \
+  $entry_point

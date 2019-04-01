@@ -1,0 +1,75 @@
+#!/bin/bash
+
+function run_terraform {
+  EVN="development"
+  FOLDER="development"
+  DOCKER_ARGS=()
+  ARGS=()
+
+  for i in "${@}";
+  do
+  case $i in
+  -e=*|--env=*)
+  EVN="${i#*=}"
+  ;;
+  -t|-i)
+  DOCKER_ARGS+=("$i")
+  ;;
+  *)
+  ARGS+=("$i")
+  ;;
+  esac
+  done
+
+  if [ $EVN == "staging" ];
+  then
+    FOLDER="staging"
+  fi
+
+  if [ $EVN == "production" ];
+  then
+    FOLDER="production"
+  fi
+
+  docker run \
+  --rm \
+  -e "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" \
+  -e "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" \
+  -e "AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION" \
+  -v $INFRASTRUCTURE_FOLDER/secret.tfvars:/secret.tfvars \
+  -v $INFRASTRUCTURE_FOLDER/environments/$FOLDER:/data \
+  -v $INFRASTRUCTURE_FOLDER/modules:/modules \
+  -v $BUILD_FOLDER:/lambda \
+  -w /data \
+  ${DOCKER_ARGS[@]} \
+  hashicorp/terraform:$TF_VERSION ${ARGS[@]} -var=version=$VERSION -var=ecr_repository=$AWS_ECR_URL -var=service_name=$SERVICE_NAME -var-file="/secret.tfvars"
+}
+
+function run_terraform_with_pure_param {
+  ARGS=()
+  DOCKER_ARGS=()
+
+  for i in "${@}";
+  do
+  case $i in
+  -t|-i)
+  DOCKER_ARGS+=("$i")
+  ;;
+  *)
+  ARGS+=("$i")
+  ;;
+  esac
+  done
+
+  docker run \
+  --rm \
+  -e "AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" \
+  -e "AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" \
+  -e "AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION" \
+  -v $INFRASTRUCTURE_FOLDER:/data \
+  -v $INFRASTRUCTURE_FOLDER/secret.tfvars:/secret.tfvars \
+  -v $BUILD_FOLDER:/lambda \
+  -w /data \
+  ${DOCKER_ARGS[@]} \
+  hashicorp/terraform:$TF_VERSION ${ARGS[@]}
+}

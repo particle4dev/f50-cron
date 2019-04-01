@@ -1,0 +1,80 @@
+# serverless.yml
+
+service: coin-tracker-crawler
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: dev # Set the default stage used. Default is dev
+  region: ap-southeast-1 # Overwrite the default region used. Default is us-east-1
+  # profile: production # The default profile to use with this service
+  # memorySize: 512 # Overwrite the default memory size. Default is 1024
+  # deploymentBucket:
+  #   name: com.serverless.${self:provider.region}.deploys # Overwrite the default deployment bucket
+  #   serverSideEncryption: AES256 # when using server-side encryption
+  # versionFunctions: false # Optional function versioning
+  # stackTags: # Optional CF stack tags
+  #  key: value
+  # stackPolicy: # Optional CF stack policy. The example below allows updates to all resources except deleting/replacing EC2 instances (use with caution!)
+  #   - Effect: Allow
+  #     Principal: "*"
+  #     Action: "Update:*"
+  #     Resource: "*"
+  #   - Effect: Deny
+  #     Principal: "*"
+  #     Action:
+  #       - Update:Replace
+  #       - Update:Delete
+  #     Condition:
+  #       StringEquals:
+  #         ResourceType:
+  #           - AWS::EC2::Instance
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: arn:aws:dynamodb:*:*:*
+  environment:
+    DEBUG: "serverless:*"
+
+functions:
+  lambda: # A Function
+    handler: handler.compute
+    events:
+      - schedule:
+          name: cloudwatch-dev-coin-tracker-crawler-service
+          rate: rate(5 minutes)
+          enabled: true
+          input:
+            key1: value1
+            key2: value2
+            stageParams:
+              stage: dev
+
+# The "Resources" your "Functions" use.  Raw AWS CloudFormation goes in here.
+resources:
+  Resources:
+    CoinPrices:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: CoinPrices
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: last_updated
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+          - AttributeName: last_updated
+            KeyType: RANGE
+        StreamSpecification:
+          StreamViewType: NEW_AND_OLD_IMAGES
+        ProvisionedThroughput:
+          ReadCapacityUnits: 20
+          WriteCapacityUnits: 20

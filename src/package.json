@@ -1,0 +1,28 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "./node_modules/.bin/babel handler --ignore spec.js,test.js,**/__tests__/*.js,node_modules,build --out-dir ./build --copy-files",
+    "test:tape": "NODE_ENV=test ./node_modules/.bin/tape -r babel-register handler/**/__tests__/**/index.js | tap-diff",
+    "test:watch": "NODE_ENV=test nodemon --watch handler -q -x 'npm run test:tape'"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.238.1",
+    "debug": "^3.1.0",
+    "html-minifier": "^3.5.16",
+    "influx": "^5.0.7",
+    "lodash": "^4.17.5",
+    "lru-cache": "^4.1.2",
+    "mongoose": "^5.0.12",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-es2015-node5": "^1.2.0",
+    "babel-register": "^6.26.0",
+    "nodemon": "^1.17.2",
+    "tap-diff": "^0.1.1",
+    "tape": "^4.9.0"
+  }
+}
