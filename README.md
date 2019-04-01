@@ -5,9 +5,8 @@
 <h1 align="center">
   f50-cron
   <br>
+  Create your cronjob with Lambda and Cloudwatch in seconds
 </h1>
-
-Create your cronjob with Lambda and Cloudwatch in seconds
 
 ## Built With
 
