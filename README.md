@@ -7,6 +7,10 @@
   <br>
 </h1>
 
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/particle4dev/f50-cron/releases). 
+
 ## Authors
 
 * **Nam Hoang** - *Initial work* - [particle4dev](https://github.com/particle4dev)
