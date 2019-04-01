@@ -5,5 +5,4 @@
 <h1 align="center">
   <br>
   f50-cron
-  <br>
 </h1>
