@@ -11,7 +11,7 @@
 
 * **Nam Hoang** - *Initial work* - [particle4dev](https://github.com/particle4dev)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](AUTHORS) who participated in this project.
 
 ## License
 
