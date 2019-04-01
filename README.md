@@ -11,7 +11,6 @@
 
 * [Terraform](https://www.terraform.io/) - Write, Plan, and Create Infrastructure as Code
 * [Docker](https://www.docker.com/) - Build, secure and manage applications
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
 ## Contributing
 
