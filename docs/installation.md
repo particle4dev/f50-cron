@@ -23,7 +23,6 @@ aws sns publish \
   --topic-arn arn:aws:sns:us-east-1:205098223684:sns-dev-fl-sync-wallet \
   --message “message.txt” \
   --subject Test
-
 ```
 
 **Remove the installation**
