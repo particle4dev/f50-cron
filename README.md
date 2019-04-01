@@ -7,6 +7,8 @@
   <br>
 </h1>
 
+Create your cronjob with Lambda and Cloudwatch in seconds
+
 ## Built With
 
 * [Terraform](https://www.terraform.io/) - Write, Plan, and Create Infrastructure as Code
