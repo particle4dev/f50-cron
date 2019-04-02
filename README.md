@@ -11,6 +11,11 @@
   Create your cronjob with Lambda and Cloudwatch in seconds
 </p>
 
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
 ## Built With
 
 * [Terraform](https://www.terraform.io/) - Write, Plan, and Create Infrastructure as Code
