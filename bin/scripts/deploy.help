@@ -1,0 +1,10 @@
+For example:
+
+  $ ./bin/sms deploy
+
+Usage: deploy [options]
+
+Options:
+  init
+  apply
+  destroy

@@ -1,0 +1,6 @@
+#!/bin/bash
+R_DIR=$(pwd)
+INFRASTRUCTURE_FOLDER="$R_DIR/infrastructure"
+LOCAL_FOLDER="$R_DIR/src"
+BUILD_FOLDER="$R_DIR/build"
+TF_VERSION="$(cat $INFRASTRUCTURE_FOLDER/.terraform_version)"

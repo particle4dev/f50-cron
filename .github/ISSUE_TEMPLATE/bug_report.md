@@ -1,3 +1,8 @@
+---
+name: Bug report
+about: Create a report to help us improve
+---
+
 Title: [Persona name] should (not) be able to [action]
 
 **Currently:**

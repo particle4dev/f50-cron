@@ -1,0 +1,8 @@
+For example:
+
+  $ ./bin/snail destroy
+
+Usage: destroy [options]
+
+Options:
+  --help display a short-ish description of the command

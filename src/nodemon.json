@@ -1,0 +1,8 @@
+{
+  "watch": [
+    "handler",
+    "test"
+  ],
+  "env": {},
+  "ext": "js json"
+}

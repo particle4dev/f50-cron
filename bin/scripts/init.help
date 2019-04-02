@@ -1,0 +1,8 @@
+For example:
+
+  $ ./bin/snail init
+
+Usage: init [options]
+
+Options:
+  --help display a short-ish description of the command

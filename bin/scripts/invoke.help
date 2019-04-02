@@ -1,0 +1,9 @@
+For example:
+
+  $ ./bin/snail invoke -d=query{test{hello}}
+
+Usage: invoke [options]
+
+Options:
+  --help        display a short-ish description of the command
+  -d | --data   pass query data (no space)

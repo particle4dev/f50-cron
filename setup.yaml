@@ -1,0 +1,2 @@
+service_name: lambda-service
+language: nodejs 

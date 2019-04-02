@@ -1,0 +1,40 @@
+#!/bin/bash
+
+ROOT_DIR=`dirname "$(perl -e 'use Cwd "abs_path"; print abs_path(shift)' $0)"`
+
+. "$ROOT_DIR/../constant"
+for f in $ROOT_DIR/../utils/*; do source $f; done
+
+# Step 1: build source code
+if [ -z $GITLAB_CI ];
+then
+  docker-compose -f $LOCAL_FOLDER/docker-compose.yml  -f $LOCAL_FOLDER/docker-compose.build.yml \
+  up \
+  ${ARGS[@]} ${DOCKER_ARGS[@]}
+  docker-compose -f $LOCAL_FOLDER/docker-compose.yml  -f $LOCAL_FOLDER/docker-compose.build.yml \
+  rm -f
+else
+  cd $LOCAL_FOLDER
+  npm run build
+  cd $R_DIR
+  cp -a $LOCAL_FOLDER/build/. $BUILD_FOLDER
+fi
+
+# Step 2: generate package.json
+
+if [[ ! -f "$BUILD_FOLDER/package.json" ]]; then
+  cp "$LOCAL_FOLDER/package.json" $BUILD_FOLDER
+fi
+
+if [[ -f "$LOCAL_FOLDER/yarn.lock" ]]; then
+  cp "$LOCAL_FOLDER/yarn.lock" $BUILD_FOLDER
+fi
+
+cp -a $R_DIR/static $BUILD_FOLDER
+
+# Step 3: build node_modules
+docker run \
+  --rm \
+  -v $PWD/build:/var/task \
+  lambci/lambda:build-nodejs6.10 \
+  npm install --production

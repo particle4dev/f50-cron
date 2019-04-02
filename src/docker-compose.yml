@@ -1,0 +1,15 @@
+version: "3.3"
+
+services:
+
+  fl-daily-reports:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ../static:/usr/src/app/handler/static
+      - ./handler:/usr/src/app/handler
+      - ./test:/usr/src/app/test
+      - ./package.json:/usr/src/app/package.json
+      - ./.babelrc:/usr/src/app/.babelrc
+      - ./yarn.lock:/usr/src/app/yarn.lock

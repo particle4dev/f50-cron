@@ -1,0 +1,11 @@
+#!/bin/bash
+ROOT_DIR=`dirname "$(perl -e 'use Cwd "abs_path"; print abs_path(shift)' $0)"`
+
+. "$ROOT_DIR/../constant"
+for f in $ROOT_DIR/../utils/*; do source $f; done
+
+# Run on local
+# run_terraform -i -t apply ${@}
+
+# Run on gitlab
+run_terraform -i -t apply -auto-approve ${@}
