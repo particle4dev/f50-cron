@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./logo.jpg" width="150" />
+  <img src="logo.jpg" width="150" />
 </p>
 
 <h1 align="center">
@@ -9,6 +9,10 @@
 
 <p align="center">
   Create your cronjob with Lambda and Cloudwatch in seconds
+</p>
+
+<p align="center">
+  <img src="architecture/diagram.png" />
 </p>
 
 ## Quick start
