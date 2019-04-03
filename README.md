@@ -11,10 +11,24 @@
   Create your cronjob with Lambda and Cloudwatch in seconds
 </p>
 
+## Quick start
 
-## Deployment
+### Prerequisites
 
-Add additional notes about how to deploy this on a live system
+Following are the minimum tested versions for the tools and libraries you need for running this project:
+
+- Docker: 18.09.2, build 6247962 or newer
+- An AWS account
+
+### Install
+
+1.  Clone this repo using `git clone --depth=1 https://github.com/particle4dev/f50-cron.git <YOUR_PROJECT_NAME>`
+2.  Move to the appropriate directory: `cd <YOUR_PROJECT_NAME>`.<br />
+3.  Run `./bin/snail init` to initialize a working directory containing Terraform configuration files.<br />
+4. Run `./bin/snail build` to build the lambda function, for compilation, deployment.<br />
+5. Run `./bin/snail deploy` to apply the changes required to reach the desired state of the configuration.
+
+Now you've just finished deploying a cronjob on AWS Lambda. 
 
 ## Built With
 
