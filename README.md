@@ -11,7 +11,6 @@
   Create your cronjob with Lambda and Cloudwatch in seconds
 </p>
 
-
 ## Deployment
 
 Add additional notes about how to deploy this on a live system
