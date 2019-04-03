@@ -9,8 +9,8 @@ resource "aws_lambda_permission" "lambda_permission" {
 resource "aws_cloudwatch_event_rule" "cloudwatch_event_rule" {
   name        = "${local.cloudwatch_event_rule}"
 
-  schedule_expression = "cron(0 2 * * ? *)"
-  # schedule_expression = "rate(5 minutes)"
+  # schedule_expression = "cron(0 2 * * ? *)"
+  schedule_expression = "rate(5 minutes)"
 }
 
 resource "aws_cloudwatch_event_target" "cloudwatch_lambda_target" {
