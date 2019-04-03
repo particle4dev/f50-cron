@@ -30,11 +30,11 @@ if [[ -f "$LOCAL_FOLDER/yarn.lock" ]]; then
   cp "$LOCAL_FOLDER/yarn.lock" $BUILD_FOLDER
 fi
 
-cp -a $R_DIR/static $BUILD_FOLDER
+cp -a $STATIC_FOLDER $BUILD_FOLDER
 
 # Step 3: build node_modules
 docker run \
   --rm \
-  -v $PWD/build:/var/task \
+  -v $BUILD_FOLDER:/var/task \
   lambci/lambda:build-nodejs6.10 \
   npm install --production

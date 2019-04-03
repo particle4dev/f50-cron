@@ -2,5 +2,6 @@
 R_DIR=$(pwd)
 INFRASTRUCTURE_FOLDER="$R_DIR/packages/infrastructure"
 LOCAL_FOLDER="$R_DIR/packages/src"
-BUILD_FOLDER="$R_DIR/build"
+STATIC_FOLDER="$R_DIR/packages/static"
+BUILD_FOLDER="$R_DIR/packages/build"
 TF_VERSION="$(cat $INFRASTRUCTURE_FOLDER/.terraform_version)"
