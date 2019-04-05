@@ -38,7 +38,7 @@ Following are the minimum tested versions for the tools and libraries you need f
 ```
 AWS_DEFAULT_PROFILE: Specifies the name of the CLI profile with the credentials and options to use
 AWS_ACCESS_KEY_ID: Specifies an AWS access key associated with an IAM user or role
-AWS_SECRET_ACCESS_KEY: Specifies the secret key associated with the access key. This is essentially the "password" for the access key
+AWS_SECRET_ACCESS_KEY: Specifies the secret key associated with the access key.
 AWS_DEFAULT_REGION: Specifies the AWS Region to send the request to
 SERVICE_NAME: Specifies the name of cronjob
 STATE_S3_BUCKET: Specifies the S3 bucket that Terraform will store the state
