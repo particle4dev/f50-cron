@@ -36,11 +36,11 @@ Now you've just finished deploying a cronjob on AWS Lambda.
 
 ## Project structure
 
-- [packages/infrastructure](packages/infrastructure)
+- [packages/infrastructure](packages/infrastructure): Terraform code that will create Lambda and Cloudwatch
 
-- [packages/src](packages/src)
+- [packages/src](packages/src): Nodejs code that run on lambda 
 
-- [packages/static](packages/static)
+- [packages/static](packages/static): Static file such as html, images or css files
 
 ## Built With
 
