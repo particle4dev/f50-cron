@@ -30,7 +30,6 @@ build/
 saved/
 
 .sass-cache
-bin/.clean
 
 # Module directory
 .terraform/
