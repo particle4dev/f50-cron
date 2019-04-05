@@ -34,7 +34,7 @@ Following are the minimum tested versions for the tools and libraries you need f
 
 1.  Clone this repo using `git clone --depth=1 https://github.com/particle4dev/f50-cron.git <YOUR_PROJECT_NAME>`
 2.  Move to the appropriate directory: `cd <YOUR_PROJECT_NAME>`.<br />
-3.	Fill your config in `bin/.env` file
+3.	Fill your config in `bin/.env` file.<br />
 ```
 AWS_DEFAULT_PROFILE: Specifies the name of the CLI profile with the credentials and options to use
 AWS_ACCESS_KEY_ID: Specifies an AWS access key associated with an IAM user or role
