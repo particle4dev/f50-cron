@@ -30,7 +30,6 @@ build/
 saved/
 
 .sass-cache
-bin/.env
 bin/.clean
 
 # Module directory
