@@ -34,6 +34,14 @@ Following are the minimum tested versions for the tools and libraries you need f
 
 Now you've just finished deploying a cronjob on AWS Lambda. 
 
+## Project structure
+
+- [packages/infrastructure](packages/infrastructure)
+
+- [packages/src](packages/src)
+
+- [packages/static](packages/static)
+
 ## Built With
 
 * [Terraform](https://www.terraform.io/) - Write, Plan, and Create Infrastructure as Code
