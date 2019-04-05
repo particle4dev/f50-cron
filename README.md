@@ -42,12 +42,14 @@ Following are the minimum tested versions for the tools and libraries you need f
 
     - AWS_SECRET_ACCESS_KEY: Specifies the secret key associated with the access key.
 
-```
-AWS_DEFAULT_REGION: Specifies the AWS Region to send the request to
-SERVICE_NAME: Specifies the name of cronjob
-STATE_S3_BUCKET: Specifies the S3 bucket that Terraform will store the state
-STATE_S3_KEY: Specifies the file on S3 bucket that Terraform state will be written to it
-```
+    - AWS_DEFAULT_REGION: Specifies the AWS Region to send the request to
+
+    - SERVICE_NAME: Specifies the name of cronjob
+
+    - STATE_S3_BUCKET: Specifies the S3 bucket that Terraform will store the state
+
+    - STATE_S3_KEY: Specifies the file on S3 bucket that Terraform state will be written to it
+
 4. Run `./bin/snail init` to initialize a working directory containing Terraform configuration files.<br />
 5. Run `./bin/snail build` to build the lambda function, for compilation, deployment.<br />
 6. Run `./bin/snail deploy` to apply the changes required to reach the desired state of the configuration.
