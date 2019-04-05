@@ -15,6 +15,12 @@
   <img src="architecture/diagram.png" />
 </p>
 
+## Why you should use this boilerplate:
+
+- Easy to setup, you can setup a cronjob in less than 1 min.
+
+- Saving cost, lambda free tier has 1M free requests per month.
+
 ## Quick start
 
 ### Prerequisites
